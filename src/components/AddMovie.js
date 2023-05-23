@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { addDoc } from "firebase/firestore";
 import { moviesRef } from "../components/firebase/FireBase";
 import swal from "sweetalert";
-import { Await } from "react-router-dom";
+import { Await, useNavigate } from "react-router-dom";
 import { Icon } from "@mui/material";
+import { Appstate } from "../App";
 
 const AddMovie = () => {
+  const useAppstate=useContext(Appstate);
+  const navigate=useNavigate();
   const [form, setForm] = useState({
     name: "",
     year: "",
@@ -19,6 +22,7 @@ const AddMovie = () => {
 
   const addMovie = async () => {
     try {
+   if(useAppstate.login){
       setLoading(true);
       await addDoc(moviesRef, form);
       swal({
@@ -32,7 +36,10 @@ const AddMovie = () => {
         year: "",
         Description: "",
         img: "",
-      });
+      })}
+      else{
+        navigate('/login');
+      }
     } catch (err) {
       swal({
         title: err,

@@ -9,8 +9,10 @@ import Signup from "./components/Signup";
 const Appstate = createContext();
 
 function App() {
+  
   const [login, setLogin] = useState(false);
   const [userName, setUserName] = useState("");
+
   return (
     <Appstate.Provider value={{ login, userName, setUserName, setLogin }}>
       <div className="App">
