@@ -6,6 +6,7 @@ import Detail from "./components/Detail";
 import { createContext, useState } from "react";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Footer from "./components/Footer";
 const Appstate = createContext();
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/detail/:id" element={<Detail />} />
         </Routes>
+        <Footer />
       </div>
     </Appstate.Provider>
   );

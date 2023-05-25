@@ -122,7 +122,10 @@ const verifyOTP = () => {
                 Name
               </label>
               <input
-                
+                required
+                requiredTxt
+              formatErrorTxt
+              autoComplete="off"
                 value={form.name}
                 autoFocus
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -139,6 +142,10 @@ const verifyOTP = () => {
                 Mobile No.
               </label>
               <input
+              required
+              requiredTxt
+              autoComplete="off"
+              formatErrorTxt
                 type={"number"}
                 value={form.mobile}
               
@@ -157,6 +164,10 @@ const verifyOTP = () => {
               </label>
               <input
               type={'password'}
+              required
+              requiredTxt
+              formatErrorTxt
+              autoComplete="off"
                 value={form.password}
                 onChange={(e) => setForm({ ...form, password: e.target.value })}
                 id="message"

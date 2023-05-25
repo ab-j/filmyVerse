@@ -6,7 +6,7 @@ import { usersRef } from "./firebase/FireBase";
 import {Appstate} from "../App"
 import bcrypt from 'bcryptjs'
 import swal from "sweetalert";
-
+import Footer from "./Footer";
 const Login = () => {
   const navigate = useNavigate();
   const useAppstate = useContext(Appstate);
@@ -56,7 +56,7 @@ const Login = () => {
   }
 
   return (
-    <div className="w-full flex  flex-col mt-4 justify-center items-center ">
+    <div className="w-full max-h-fit flex  flex-col mt-4 justify-center items-center ">
       <h1 className=" text-4xl  font-bold">
         {" "}
         Log<span className=" text-red-600">In</span>
@@ -66,11 +66,16 @@ const Login = () => {
         <div class="relative">
           <label for="imgLink" class="leading-7 text-sm text-white">
             Mobile No.
+
           </label>
           <input
           type={"number"}
             value={form.mobile}
             autoFocus
+            required
+            autoComplete="off"
+            requiredTxt
+              formatErrorTxt
             onChange={(e) => setForm({ ...form, mobile: e.target.value })}
             id="mobile"
             name="mobile"
@@ -85,6 +90,10 @@ const Login = () => {
           </label>
           <input
             value={form.password}
+            required
+            requiredTxt
+              formatErrorTxt
+            autoComplete="off"
             onChange={(e) => setForm({ ...form, password: e.target.value })}
             id="password"
             name="password"
